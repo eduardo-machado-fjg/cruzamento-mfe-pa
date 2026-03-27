@@ -108,3 +108,34 @@ print("Qual porcentagem das participações de cada Macro Área incluiu a compet
 df_final['Visao_Flag'] = df_final['Visão Estratégica'].apply(lambda x: 1 if str(x).strip().upper() == 'SIM' else 0)
 taxa_visao = df_final.groupby('Macro Área')['Visao_Flag'].mean() * 100
 print(taxa_visao.round(1).astype(str) + '%')
+
+# ---------------------------------------------------------
+# NOVAS ANÁLISES DE DIVERSIDADE (GÊNERO E RAÇA)
+# ---------------------------------------------------------
+
+print("\n" + "="*50)
+print("🌍 ANÁLISE 4: PERFIL DE GÊNERO NAS CAPACITAÇÕES")
+print("="*50)
+# 4.1 Visão Geral
+genero_total = df_final['Gênero'].value_counts(normalize=True) * 100
+print("--- Distribuição Geral de Gênero na Prefeitura ---")
+print(genero_total.round(1).astype(str) + '%\n')
+
+# 4.2 Gênero x Macro Área
+genero_macro = pd.crosstab(df_final['Macro Área'], df_final['Gênero'], normalize='index') * 100
+print("--- Distribuição de Gênero por Macro Área ---")
+print(genero_macro.round(1).astype(str) + '%')
+
+
+print("\n" + "="*50)
+print("✊ ANÁLISE 5: PERFIL DE RAÇA/COR NAS CAPACITAÇÕES")
+print("="*50)
+# 5.1 Visão Geral
+raca_total = df_final['Raça/Cor'].value_counts(normalize=True) * 100
+print("--- Distribuição Geral de Raça/Cor na Prefeitura ---")
+print(raca_total.round(1).astype(str) + '%\n')
+
+# 5.2 Raça/Cor x Macro Área
+raca_macro = pd.crosstab(df_final['Macro Área'], df_final['Raça/Cor'], normalize='index') * 100
+print("--- Distribuição de Raça/Cor por Macro Área ---")
+print(raca_macro.round(1).astype(str) + '%')

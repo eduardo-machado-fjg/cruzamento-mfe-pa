@@ -187,7 +187,7 @@ print(mapa_texto.to_string())
 # 5.2. Gerando uma Imagem do Mapa de Calor (Heatmap)
 try:
     print("\n🎨 Gerando imagem do Mapa de Calor ('mapa_calor_areas.png')...")
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(18, 10))
     
     # Criamos o gráfico usando a biblioteca seaborn
     sns.heatmap(mapa_texto, annot=True, cmap="YlGnBu", fmt='g', linewidths=.5)
