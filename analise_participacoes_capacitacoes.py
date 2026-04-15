@@ -117,12 +117,15 @@ print("\n" + "="*50)
 print("🌍 ANÁLISE 4: PERFIL DE GÊNERO NAS CAPACITAÇÕES")
 print("="*50)
 # 4.1 Visão Geral
-genero_total = df_final['Gênero'].value_counts(normalize=True) * 100
+
+df_final['Sexo'] = df_final['Sexo'].astype(str).str.strip().str.title()
+
+genero_total = df_final['Sexo'].value_counts(normalize=True) * 100
 print("--- Distribuição Geral de Gênero na Prefeitura ---")
 print(genero_total.round(1).astype(str) + '%\n')
 
 # 4.2 Gênero x Macro Área
-genero_macro = pd.crosstab(df_final['Macro Área'], df_final['Gênero'], normalize='index') * 100
+genero_macro = pd.crosstab(df_final['Macro Área'], df_final['Sexo'], normalize='index') * 100
 print("--- Distribuição de Gênero por Macro Área ---")
 print(genero_macro.round(1).astype(str) + '%')
 
